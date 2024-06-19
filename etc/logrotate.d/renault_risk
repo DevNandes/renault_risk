@@ -1,0 +1,15 @@
+# Gerenciamento dos logs do renault_risk
+# Deve ser configurado no Docker Host
+
+/nr/renault_risk/logs/renault_risk.app.log {
+    weekly
+    nocompress
+    notifempty
+    nodateext
+    missingok
+    copytruncate
+    su root root
+    create 0666 root root
+    rotate 5
+    size 128M
+}

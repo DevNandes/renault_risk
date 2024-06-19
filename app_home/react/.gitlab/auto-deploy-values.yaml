@@ -1,0 +1,5 @@
+deploymentApiVersion: apps/v1
+service:
+  internalPort: 80
+
+    

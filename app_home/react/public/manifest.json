@@ -1,0 +1,14 @@
+{
+  "name": "RenaultRisk",
+  "short_name": "RenaultRisk",
+  "description": "O web app React RenaultRisk tem como objetivo, integrar com um banco de dados o controle de riscos que antes era feito via tabelas excel, ele tem integrações com a seguinte API: RWS. Ele roda com NGINX",
+  "display": "standalone",
+  "start_url": "/home",
+  "icons": [
+    {
+      "src": "./logo_ico/renault.png",
+      "sizes": "120x118",
+      "type": "image/png"
+    }
+  ]
+}

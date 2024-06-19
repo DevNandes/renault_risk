@@ -1,0 +1,21 @@
+{
+  "name": "renault-risk-srv",
+  "version": "1.0.0",
+  "description": "Interface para os sistemas da Renault de controle de riscos",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "devstart": "nodemon server.js"
+  },
+  "dependencies": {
+    "app-root-path": "^2.2.1",
+    "compression": "^1.7.4",
+    "express": "^4.17.3",
+    "helmet": "^3.22.0",
+    "morgan": "^1.10.0",
+    "winston": "^2.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}

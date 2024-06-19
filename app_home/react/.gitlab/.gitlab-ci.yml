@@ -1,0 +1,43 @@
+image: alpine:latest
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH
+
+variables:
+  DOCKER_DRIVER: overlay2
+  ROLLOUT_RESOURCE_TYPE: deployment
+  DOCKER_TLS_CERTDIR: ""
+  POSTGRES_ENABLED: "false"
+
+stages:
+  - build
+  - test
+  - pre-deploy
+  - deploy # dummy stage to follow the template guidelines
+  - review
+  - dast
+  - staging
+  - canary
+  - production
+  - incremental rollout 10%
+  - incremental rollout 25%
+  - incremental rollout 50%
+  - incremental rollout 100%
+  - performance
+  - cleanup
+
+include:
+  - template: Jobs/Deploy.gitlab-ci.yml
+
+  - project: "interno/gitlab/devops"
+    ref: master
+    file: "/.gitlab-v2/ci/build.yml"
+
+# - project: "interno/gitlab/devops"
+#  ref: master
+#   file: "/.gitlab-v2/ci/qa.yml"
+
+  - project: "interno/gitlab/devops"
+    ref: master
+    file: "/.gitlab-v2/ci/cleanup.yml"

@@ -1,0 +1,78 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:import/react"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly",
+    "__DEV__": "readonly"
+  },
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "no-nested-ternary": "off",	
+    "prettier/prettier": "off",
+    "react/jsx-filename-extension": ["warn", { "extensions": [".jsx", ".js"] }],
+    "import/prefer-default-export": "off",
+    "no-param-reassign": "off",
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "global-require": 0,
+    "import/no-dynamic-require":0,
+    "import/no-unresolved": 0,
+    "arrow-body-style": 0,
+    "semi": [0, "never"],
+    "quotes": "off",
+    "comma-dangle": "off",
+    "object-curly-newline": "off",
+    "no-confusing-arrow": "off",
+    "implicit-arrow-linebreak": "off",
+    "function-paren-newline": "off",
+    "operator-linebreak": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "nonblock-statement-body-position": "off",
+    "indent": "off",
+    "curly": "off",
+    "no-mixed-operators": "off",
+    "func-names": "off",
+    "no-tabs": "off",
+    "object-curly-spacing": "off",
+    "space-before-function-paren": "off",
+    "prefer-arrow-callback": "off",
+    "arrow-parens": "off",
+    "no-return-await": "off",
+    "react/jsx-indent": "off",
+    "consistent-return": "off",
+    "react/jsx-indent-props": "off",
+    "react/jsx-curly-newline": "off",
+    "import/no-duplicates": "off",
+    "import/order": "off",
+    "react/self-closing-comp": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/destructuring-assignment": "off",
+    "max-len": "off",
+    "no-unused-expressions": "off",
+    "react/jsx-no-bind": "off",
+    "prefer-promise-reject-errors": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "no-alert": "off",
+    "no-console": "off",
+    "import/extensions": [0, { "js": "always" }]
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-plugin-root-import": {
+        "rootPathPrefix": "~",
+        "rootPathSuffix": "src"
+      }
+    }
+  }
+}
