@@ -39,7 +39,7 @@ export const CadastroRisco = () => {
                 <div className="label-input">
                     <label>Tipo de Risco:</label>
                     <Select
-                        className="select-pedidos"
+                        className="react-select-geral"
                         components={animatedComponents}
                         value={tipoRisco}
                         closeMenuOnSelect={false}
@@ -54,7 +54,7 @@ export const CadastroRisco = () => {
                 <div className="label-input">
                     <label>Área Identificadora:</label>
                     <Select
-                        className="select-pedidos"
+                        className="react-select-geral"
                         components={animatedComponents}
                         value={areaIdentificacao}
                         closeMenuOnSelect={false}
@@ -100,7 +100,7 @@ export const CadastroRisco = () => {
                 <div className="label-input">
                     <label>Metier:</label>
                     <Select
-                        className="select-pedidos"
+                        className="react-select-geral"
                         components={animatedComponents}
                         value={metier}
                         closeMenuOnSelect={false}
@@ -115,7 +115,7 @@ export const CadastroRisco = () => {
                 <div className="label-input">
                     <label>Jalon:</label>
                     <Select
-                        className="select-pedidos"
+                        className="react-select-geral"
                         components={animatedComponents}
                         value={jalon}
                         closeMenuOnSelect={false}

@@ -75,3 +75,42 @@ body.dark .cadastro-risco .first-box {
     box-shadow: 2px 2px 20px 2px #ffbf008f;
     border: yellow 2px solid;
 }
+
+body.dark .cadastro-risco hr {
+    border-top: 1px solid rgba(255, 215, 0, 0.78);
+}
+
+body.dark .cadastro-risco {
+    color: #fff;
+}
+
+body.dark .cadastro-risco .titulo-step {
+    color: #fff;
+}
+
+body.dark .cadastro-risco .inputs {
+    background: rgb(49, 49, 49) !important;
+    border: 1px solid black !important;
+    color: white !important;
+}
+
+body.dark .cadastro-risco .text-area {
+    background: rgb(49, 49, 49) !important;
+    border: 1px solid black !important;
+    color: white !important;
+}
+
+body.dark .cadastro-risco {
+
+    .react-select-geral .css-13cymwt-control,
+    .react-select-geral .css-t3ipsp-control,
+    .react-select-geral .css-1mndiq5-menu {
+        background: rgb(49, 49, 49) !important;
+        border: 1px solid black !important;
+    }
+
+    .react-select-geral .css-1dimb5e-singleValue {
+        color: white !important;
+    }
+
+}

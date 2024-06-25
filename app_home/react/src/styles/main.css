@@ -231,7 +231,7 @@ body.dark {
     }
 
     input {
-        background: rgb(49, 49, 49) !important;
+        background: rgb(49, 49, 49);
         border: 1px solid black !important;
         color: white !important;
     }
