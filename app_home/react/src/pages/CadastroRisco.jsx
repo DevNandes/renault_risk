@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+// Funcoes
+import { makeRequestRWS } from "~/functions/request"
 
 // Libs
 import Select from 'react-select';
@@ -122,8 +125,7 @@ export const CadastroRisco = () => {
                             className="react-select-geral"
                             components={animatedComponents}
                             value={formState[name]}
-                            closeMenuOnSelect={false}
-                            isMulti
+                            closeMenuOnSelect
                             onChange={(value) => handleSelectChange(name, value)}
                             options={options[optionsKey]}
                             placeholder={!formState[name].length ? `Selecione ${label}` : formState[name]}
@@ -160,6 +162,51 @@ export const CadastroRisco = () => {
         }
     };
 
+    // Busca opções e seta elas de acordo com o resultado
+    const getOptions = async () => {
+        try {
+            const result = await makeRequestRWS("/riscos/options");
+            console.log(result)
+            setOptions(result.options);
+        } catch (error) {
+            console.error("Erro ao buscar opções: ", error);
+        }
+    };
+
+    // Limpa todos os campos
+    const limpaCampos = () => {
+        setFormState({
+            risco: "",
+            tipoRisco: [],
+            areaIdentificacao: [],
+            dataEntrada: new Date().toISOString().split('T')[0],
+            consequencias: "",
+            projeto: "",
+            metier: [],
+            jalon: [],
+            probabilidade: [],
+            impacto: [],
+            estrategia: [],
+            acao: "",
+            nomePiloto: "",
+            idPiloto: "",
+            dataResposta: "",
+            dataAlerta: "",
+            comentarios: "",
+            probResidual: [],
+            impacResidual: [],
+            acaoValidacao: [],
+            riscoValidacao: [],
+            dataResolucao: "",
+            captalizacao: []
+        })
+    }
+
+    // Efeitos
+    useEffect(() => {
+        getOptions()
+    }, [])
+
     return (
         <div className="cadastro-risco">
             <div className="first-box">
@@ -189,6 +236,15 @@ export const CadastroRisco = () => {
                         {index < 4 && <hr />}
                     </React.Fragment>
                 ))}
+                <hr />
+                <div className="botoes-riscos">
+                    <button type="button" className="botao-animado" onClick={limpaCampos}>
+                        <span>LIMPAR</span>
+                    </button>
+                    <button type="button" className="botao-animado" onClick={console.log("AAAAAAAAAAA")}>
+                        <span>SALVAR</span>
+                    </button>
+                </div>
             </div>
             <div className="first-box">
                 <p className="titulo-step">Plano de Resposta</p>

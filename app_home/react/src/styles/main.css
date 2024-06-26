@@ -221,9 +221,17 @@ body.dark {
 
     .react-select-geral .css-13cymwt-control,
     .react-select-geral .css-t3ipsp-control,
-    .react-select-geral .css-1mndiq5-menu {
+    .react-select-geral .css-1mndiq5-menu,
+    .react-select-geral .css-1nmdiq5-control,
+    .react-select-geral .css-1n6sfyn-MenuList {
         background: rgb(49, 49, 49) !important;
         border: 1px solid black !important;
+        color: white;
+    }
+
+    .react-select-geral .css-d7l1ni-option:active,
+    .react-select-geral .css-d7l1ni-option:hover {
+        background-color: rgb(34, 34, 34) !important;
     }
 
     .react-select-geral .css-1dimb5e-singleValue {
