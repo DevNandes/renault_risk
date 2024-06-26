@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 
 // Funcoes
 import { makeRequestRWS } from "~/functions/request"
+import { notify } from "~/functions/notifications";
+
+// Servicos
+import { apiRWS } from "~/services/apiRWS";
 
 // Libs
 import Select from 'react-select';
@@ -173,6 +177,55 @@ export const CadastroRisco = () => {
         }
     };
 
+    // Função para salvar os dados
+    const saveRisk = async () => {
+        try {
+            // Preparando os dados para envio, removendo campos não preenchidos
+            const filteredData = Object.fromEntries(
+                Object.entries(formState).filter(([key, value]) => {
+                    // Verifica se o valor não é vazio, nulo ou não selecionado
+                    if (Array.isArray(value) && value.length === 0) return false;
+                    return value !== "" && value !== null && value !== undefined;
+                })
+            );
+
+            // Mapear os campos de select para seus valores
+            const data = {
+                ...filteredData,
+                tipoRisco: filteredData.tipoRisco ? filteredData.tipoRisco.value : undefined,
+                areaIdentificacao: filteredData.areaIdentificacao ? filteredData.areaIdentificacao.value : undefined,
+                metier: filteredData.metier ? filteredData.metier.value : undefined,
+                jalon: filteredData.jalon ? filteredData.jalon.value : undefined,
+                probabilidade: filteredData.probabilidade ? filteredData.probabilidade.value : undefined,
+                impacto: filteredData.impacto ? filteredData.impacto.value : undefined,
+                estrategia: filteredData.estrategia ? filteredData.estrategia.value : undefined,
+                probResidual: filteredData.probResidual ? filteredData.probResidual.value : undefined,
+                impacResidual: filteredData.impacResidual ? filteredData.impacResidual.value : undefined,
+                acaoValidacao: filteredData.acaoValidacao ? filteredData.acaoValidacao.value : undefined,
+                riscoValidacao: filteredData.riscoValidacao ? filteredData.riscoValidacao.value : undefined,
+                captalizacao: filteredData.captalizacao ? filteredData.captalizacao.value : undefined,
+            };
+
+            const response = await apiRWS.post('/riscos/salvar', data);
+            if (response.data.code === 200) {
+                notify({ message: "Risco salvo com sucesso!", type: "success" });
+                limpaCampos();
+            } else {
+                notify({ message: "Erro ao salvar o risco, tente novamente mais tarde.", type: "error" });
+            }
+        } catch (error) {
+            if (error.response.status === 400) {
+                mensagens.forEach((mensagem) => {
+                    notify({ message: mensagem, type: "error" });
+                });
+                const mensagens = error.response.data.error.message;
+            } else {
+                notify({ message: "Erro ao salvar o risco, tente novamente mais tarde.", type: "error" });
+            }
+            console.error("Erro ao salvar o risco: ", error);
+        }
+    };
+
     // Limpa todos os campos
     const limpaCampos = () => {
         setFormState({
@@ -241,7 +294,7 @@ export const CadastroRisco = () => {
                     <button type="button" className="botao-animado" onClick={limpaCampos}>
                         <span>LIMPAR</span>
                     </button>
-                    <button type="button" className="botao-animado" onClick={console.log("AAAAAAAAAAA")}>
+                    <button type="button" className="botao-animado" onClick={saveRisk}>
                         <span>SALVAR</span>
                     </button>
                 </div>
