@@ -51,6 +51,12 @@ export const Relatorio = () => {
         setTabelaFiltrada(resultrelatorio)
     }
 
+    // Formata a data no formato Brasileiro
+    const formatDate = (dateString) => {
+        const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+        return new Date(dateString).toLocaleDateString('pt-BR', options);
+    };
+
     // Filtra os dados
     const filtraDados = (dadosOrdenados) => {
         // Cria uma variavel para preparar os dados com os ja presentes na tabela
@@ -295,7 +301,7 @@ export const Relatorio = () => {
                                         <td className="va-mid">{risco.risk}</td>
                                         <td className="va-mid">{risco.nomeTipoRisco}</td>
                                         <td className="va-mid">{risco.nomeArea}</td>
-                                        <td className="va-mid">{risco.riskEntryDate}</td>
+                                        <td className="va-mid">{risco.riskEntryDate ? formatDate(risco.riskEntryDate) : "NAO PREENCHIDO"}</td>
                                         <td className="va-mid">{risco.consequences}</td>
                                         <td className="va-mid">{risco.project}</td>
                                         <td className="va-mid">{risco.nomeMetier}</td>
@@ -306,12 +312,12 @@ export const Relatorio = () => {
                                         <td className="va-mid">{risco.action}</td>
                                         <td className="va-mid">{risco.pilotName}</td>
                                         <td className="va-mid">{risco.pilotId}</td>
-                                        <td className="va-mid">{risco.initialDate}</td>
-                                        <td className="va-mid">{risco.alertDate}</td>
+                                        <td className="va-mid">{risco.initialDate ? formatDate(risco.initialDate) : "NAO PREENCHIDO"}</td>
+                                        <td className="va-mid">{risco.alertDate ? formatDate(risco.alertDate) : "NAO PREENCHIDO"}</td>
                                         <td className="va-mid">{risco.nomeResidualProb}</td>
                                         <td className="va-mid">{risco.nomeResidualImp}</td>
                                         <td className="va-mid">{risco.nomeAction}</td>
-                                        <td className="va-mid">{risco.resolutionDate}</td>
+                                        <td className="va-mid">{risco.resolutionDate ? formatDate(risco.resolutionDate) : "NAO PREENCHIDO"}</td>
                                         <td className="va-mid">{risco.nomeRiskValidation}</td>
                                         <td className="va-mid">{risco.idCapitalization}</td>
                                     </tr>
