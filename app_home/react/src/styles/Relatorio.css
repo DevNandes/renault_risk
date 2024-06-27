@@ -1,0 +1,449 @@
+.relatorio {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px 2px #0000003b;
+    padding: 1rem 0.5rem;
+    overflow: hidden;
+    margin: 0rem 0rem 0rem 1.5rem;
+}
+
+.relatorio .tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0 !important;
+    position: relative;
+    z-index: 0;
+    text-align: center;
+    overflow-x: auto;
+}
+
+.relatorio .thead-tr {
+    border-collapse: collapse;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.relatorio .thead-tr th {
+    color: #fff;
+    position: relative;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    cursor: pointer;
+}
+
+
+.relatorio .inputs {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    box-shadow: inset 0 0 0 transparent;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    margin: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.relatorio .inputs:disabled {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+
+.relatorio .va-mid {
+    vertical-align: middle;
+}
+
+.dropdown-menu-relatorio {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px;
+}
+
+.dropdown-menu-relatorio input {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.btn-ordenacao,
+.btn-filtro {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+
+.btn-filtro {
+    position: relative;
+}
+
+.badge-filtro {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 10px;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+}
+
+.dropdown-menu-relatorio {
+    position: absolute;
+    background-color: #e6e6e6f0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    gap: 10px;
+    border-radius: 0px 10px 10px 10px;
+    left: 55%;
+    top: 65%;
+    color: black;
+    text-align: left;
+}
+
+.dropdown-menu-relatorio.invertido {
+    border-radius: 10px 0px 10px 10px;
+    right: 55% !important;
+    top: 65% !important;
+    left: unset;
+}
+
+.dropdown-menu-relatorio input {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+}
+
+.filtros-ativos {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    padding: 20px;
+    border: black 3px solid;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 5px 3px 3px 1px rgba(0, 0, 0, 0.35);
+    margin-top: 1.5rem;
+    gap: 5px;
+}
+
+.filtros-label {
+    position: absolute;
+    top: -22px;
+    left: 25px;
+    background: white;
+    padding: 0 10px;
+    z-index: 1;
+    font-size: 1.5rem;
+    color: black;
+}
+
+.filtro-ativo {
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    color: white;
+}
+
+.ordenamento-ativo {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    color: black;
+    gap: 5px;
+    font-weight: bold;
+}
+
+.filtro-ativo .fa-times-circle {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.tabela-div {
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    height: 80vh;
+    overflow: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* NOVO */
+
+/* TOGGLE STYLING */
+.relatorio .toggle {
+    display: flex;
+    flex-direction: row;
+}
+
+.relatorio .toggle input+label {
+    margin: 0;
+    padding: .75rem 2rem;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    border: solid 1px #DDD;
+    background-color: #FFF;
+    font-size: 1rem;
+    line-height: 140%;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    transition: border-color .15s ease-out,
+        color .25s ease-out,
+        background-color .15s ease-out,
+        box-shadow .15s ease-out;
+
+    &:first-of-type {
+        border-radius: 6px 0 0 6px;
+        border-right: none;
+    }
+
+    &:last-of-type {
+        border-radius: 0 6px 6px 0;
+        border-left: none;
+    }
+}
+
+.relatorio .toggle input:hover+label {
+    border-color: #333;
+}
+
+.relatorio .toggle input:checked+label {
+    background-color: black;
+    color: #FFF;
+    box-shadow: 0 0 0 2px black;
+    border-color: black;
+    z-index: 1;
+}
+
+.relatorio .toggle input:focus+label {
+    outline: none;
+}
+
+.relatorio .toggle input {
+    display: none;
+}
+
+.relatorio .toggle input+label {
+    padding: .75rem .25rem;
+    flex: 0 0 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+/* CHECKBOX */
+.checkbox {
+    display: grid;
+    justify-content: center;
+
+    input {
+        display: none;
+    }
+
+    .checkbox__1 {
+        width: 2rem;
+        display: flex;
+        justify-content: center;
+
+        label {
+            box-shadow: 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem #FFFFFF;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.5rem;
+            width: 2rem;
+            height: 2rem;
+
+            &:hover i {
+                color: black;
+            }
+
+            i {
+                width: 1.5rem;
+                color: #9baacf;
+                transition: 0.3s ease;
+            }
+        }
+
+        & input:checked {
+            &~label {
+                background-color: black;
+                box-shadow: inset 0.2rem 0.2rem 0.5rem #0a1022, inset -0.2rem -0.2rem 0.5rem #8a8a8a;
+
+                i {
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.linha-marcada {
+    background-color: #c7c7c7;
+}
+
+.linha-marcada:hover {
+    background-color: #b1b1b1 !important;
+}
+
+
+/* BLACK THEME */
+
+body.dark {
+    .relatorio {
+        background-color: #484848;
+        box-shadow: 2px 2px 20px 2px #ffbf008f;
+        border: yellow 2px solid;
+    }
+
+    .filtros-label {
+        background-color: #484848;
+        color: white;
+    }
+
+    .filtros-ativos {
+        border: yellow 3px solid;
+        box-shadow: 2px 2px 20px 2px #ffbf008f;
+    }
+
+    .filtro-ativo {
+        background-color: #fff;
+        color: black;
+    }
+
+    .ordenamento-ativo {
+        background-color: #484848;
+        border-color: white;
+        color: white;
+    }
+
+    .tabela-div {
+        border: yellow 1px solid;
+        box-shadow: 2px 2px 20px 2px #ffbf008f;
+        color: white;
+        font-weight: 600;
+    }
+
+    .relatorio .thead-tr th {
+        color: white;
+        background: #2a2a2a;
+        font-weight: 900;
+    }
+
+    .relatorio .thead-tr th:hover {
+        color: white;
+        background: #b2b2b2;
+        font-weight: 900;
+    }
+
+    .table-hover tbody tr:hover {
+        color: white;
+        background: #8e8e8e;
+    }
+
+    .linha-marcada {
+        background-color: #8d8d8d;
+    }
+
+    .linha-marcada:hover {
+        background-color: #a4a4a4 !important;
+    }
+
+    .checkbox {
+        & .checkbox__1 {
+            & label {
+                box-shadow: 0.3rem 0.3rem 0.6rem #000, -0.2rem -0.2rem 0.5rem #3C3C3C;
+            }
+        }
+    }
+
+    .checkbox {
+        & .checkbox__1 {
+            & label {
+                & i {
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+
+    .dropdown-menu-relatorio {
+        background-color: #3d3d3df0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        color: rgb(254, 254, 254);
+    }
+    
+    .relatorio .toggle input+label {
+        border: solid 1px #4f4f4f;
+        background-color: #616161;
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    }
+
+    .relatorio .toggle input:checked+label {
+        background-color: black;
+        color: #FFF;
+        box-shadow: 0 0 0 2px black;
+        border-color: black;
+        z-index: 1;
+    }
+
+    .relatorio .toggle input:hover+label {
+        border-color: #333;
+        cursor: pointer;
+    }
+    
+}

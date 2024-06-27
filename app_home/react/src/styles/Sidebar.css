@@ -9,7 +9,7 @@
     --background: #F1F3FF;
     --text-link: #454545;
     --headline: #000;
-    --search-input: #F1F3FF;
+    --search-input: #ededed;
     --cta-background: #EBF3FF;
     --cta-background-darker: #000;
     --cta-background-border: #000;
@@ -66,6 +66,11 @@ body.dark .sidebar {
     background: var(--sidebar-background);
     transition: max-width 0.1s ease-in-out;
     overflow: inherit;
+}
+
+body.dark .sidebar {
+    box-shadow: 2px 2px 20px 2px #ffbf008f;
+    border: yellow 2px solid;
 }
 
 body.collapsed .sidebar {

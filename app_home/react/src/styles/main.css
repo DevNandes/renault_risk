@@ -248,3 +248,8 @@ body.dark {
         border: none !important;
     }
 }
+
+.botao-reset{
+    background: none;
+    border: none;
+}
