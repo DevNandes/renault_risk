@@ -1,0 +1,24 @@
+.widget {
+    border-radius: 2rem;
+    background-color: #1F2124;
+    padding: 1rem;
+    max-width: 40rem;
+    width: 20%;
+    height: 68%;
+    min-width: 20rem;
+    box-shadow: 2px 2px 20px 2px #ffbf008f;
+    border: yellow 2px solid;
+    color: white;
+}
+
+.widget.pizza {
+    width: 20%;
+    height: 30%;
+}
+
+.tela-principal{
+    display: flex;
+    flex-direction: column;
+    margin: 0rem 0rem 0rem 1.5rem;
+    gap: 2%;
+}
