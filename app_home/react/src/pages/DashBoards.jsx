@@ -59,6 +59,82 @@ export const DashBoards = () => {
         };
     };
 
+    const getSituacoesRiscosChartData = () => {
+        if (!dados) return {};
+
+        const situacoes = dados.situacoes_riscos[0];
+        const riscosEmRisco = situacoes.riscosEmRisco;
+        const riscosProblema = situacoes.riscosProblema;
+        const riscosResolvidos = situacoes.riscosResolvidos;
+        const riscosTrajetoria = situacoes.riscosTrajetoria;
+
+        return {
+            labels: ["Em Risco", "Problema", "Resolvidos", "Trajetória"],
+            datasets: [
+                {
+                    data: [riscosEmRisco, riscosProblema, riscosResolvidos, riscosTrajetoria],
+                    backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
+                },
+            ],
+        };
+    };
+
+    const getClassRiscosChartData = () => {
+        if (!dados) return {};
+
+        const situacoes = dados.riscos_por_classificacao[0];
+        const riscosCritical = situacoes.Critical;
+        const riscosModerate = situacoes.Moderate;
+        const riscosSevere = situacoes.Severe;
+        const riscosSustainable = situacoes.Sustainable;
+
+        return {
+            labels: ["Criticos", "Moderados", "Severos", "Sustentaveis"],
+            datasets: [
+                {
+                    data: [riscosCritical, riscosModerate, riscosSevere, riscosSustainable],
+                    backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
+                },
+            ],
+        };
+    };
+
+    const getMultipleBarChartData = () => {
+        if (!dados) return {};
+
+        const labels = dados.jalon_por_classificacao.map(item => `${item.nomeJalon}`);
+        const criticalData = dados.jalon_por_classificacao.map(item => item.Critical);
+        const moderateData = dados.jalon_por_classificacao.map(item => item.Moderate);
+        const severeData = dados.jalon_por_classificacao.map(item => item.Severe);
+        const sustainableData = dados.jalon_por_classificacao.map(item => item.Sustainable);
+
+        return {
+            labels,
+            datasets: [
+                {
+                    label: "Critical",
+                    data: criticalData,
+                    backgroundColor: "#FF6384",
+                },
+                {
+                    label: "Moderate",
+                    data: moderateData,
+                    backgroundColor: "#FFCE56",
+                },
+                {
+                    label: "Severe",
+                    data: severeData,
+                    backgroundColor: "#36A2EB",
+                },
+                {
+                    label: "Sustainable",
+                    data: sustainableData,
+                    backgroundColor: "#4BC0C0",
+                },
+            ],
+        };
+    };
+
     const barChartOptions = {
         indexAxis: 'y', // Inverter os eixos
         responsive: true,
@@ -127,7 +203,7 @@ export const DashBoards = () => {
                 display: true,
                 position: 'bottom',
                 labels: {
-                    color: '#FFF' // Configura a cor das labels da legenda como branca
+                    color: '#FFF'
                 }
             },
             title: {
@@ -150,6 +226,118 @@ export const DashBoards = () => {
         }
     };
 
+    const situacoesRiscosChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                    color: '#FFF'
+                }
+            },
+            title: {
+                display: true,
+                text: "Situações dos Riscos",
+                padding: {
+                    bottom: 16,
+                },
+                font: {
+                    size: 16,
+                    weight: "normal",
+                },
+                color: '#FFF'
+            },
+            tooltip: {
+                backgroundColor: "#27292D",
+                titleColor: '#FFF',
+                bodyColor: '#FFF'
+            }
+        }
+    };
+
+    const classRiscosChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                    color: '#FFF'
+                }
+            },
+            title: {
+                display: true,
+                text: "Riscos por Classificassao",
+                padding: {
+                    bottom: 16,
+                },
+                font: {
+                    size: 16,
+                    weight: "normal",
+                },
+                color: '#FFF'
+            },
+            tooltip: {
+                backgroundColor: "#27292D",
+                titleColor: '#FFF',
+                bodyColor: '#FFF'
+            }
+        }
+    };
+
+    const multipleBarChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top',
+                labels: {
+                    color: '#FFF'
+                }
+            },
+            title: {
+                display: true,
+                text: "Quantidade de Riscos por Classificação e Jalon",
+                padding: {
+                    bottom: 16,
+                },
+                font: {
+                    size: 16,
+                    weight: "normal",
+                },
+                color: '#FFF'
+            },
+            tooltip: {
+                backgroundColor: "#27292D",
+                titleColor: '#FFF',
+                bodyColor: '#FFF'
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: '#FFF'
+                },
+                grid: {
+                    color: "#5d5d5d",
+                },
+                beginAtZero: true,
+            },
+            y: {
+                ticks: {
+                    color: '#FFF'
+                },
+                grid: {
+                    color: "#5d5d5d",
+                },
+            },
+        },
+    };
+
     return (
         <div className="tela-principal">
             <div className="widget">
@@ -162,6 +350,47 @@ export const DashBoards = () => {
             <div className="widget pizza">
                 {dados ? (
                     <Doughnut data={getDoughnutChartData()} options={doughnutChartOptions} />
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </div>
+            <div className="widget pizza">
+                {dados ? (
+                    <Doughnut data={getSituacoesRiscosChartData()} options={situacoesRiscosChartOptions} />
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </div>
+            <div className="widget top">
+                {dados ? (
+                    <>
+                        <p className="titulo-graf">TOP 5 riscos mais recorrentes</p>
+                        {dados?.top_5_riscos_recorrentes && dados?.top_5_riscos_recorrentes.map((risco) => (
+                            <div className="risco">
+                                <div className="titulo-risco">
+                                    {risco.risk}
+                                </div>
+                                <div className="divisor" />
+                                <div className="contador-riscos">
+                                    {risco.risk_count} vezes
+                                </div>
+                            </div>
+                        ))}
+                    </>
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </div>
+            <div className="widget linha-multi">
+                {dados ? (
+                    <Bar data={getMultipleBarChartData()} options={multipleBarChartOptions} />
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </div>
+            <div className="widget pizza class">
+                {dados ? (
+                    <Doughnut data={getClassRiscosChartData()} options={classRiscosChartOptions} />
                 ) : (
                     <p>Loading...</p>
                 )}

@@ -215,10 +215,10 @@ export const CadastroRisco = () => {
             }
         } catch (error) {
             if (error.response.status === 400) {
+                const mensagens = error.response.data.error.message;
                 mensagens.forEach((mensagem) => {
                     notify({ message: mensagem, type: "error" });
                 });
-                const mensagens = error.response.data.error.message;
             } else {
                 notify({ message: "Erro ao salvar o risco, tente novamente mais tarde.", type: "error" });
             }

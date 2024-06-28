@@ -3,7 +3,7 @@
     background-color: #1F2124;
     padding: 1rem;
     max-width: 40rem;
-    width: 20%;
+    width: 30%;
     height: 68%;
     min-width: 20rem;
     box-shadow: 2px 2px 20px 2px #ffbf008f;
@@ -12,13 +12,58 @@
 }
 
 .widget.pizza {
-    width: 20%;
+    width: 30%;
     height: 30%;
 }
 
-.tela-principal{
+.tela-principal {
     display: flex;
     flex-direction: column;
     margin: 0rem 0rem 0rem 1.5rem;
     gap: 2%;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.titulo-graf {
+    text-align: center;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.risco {
+    width: 100%;
+    background-color: #464646;
+    border-radius: 5px;
+    display: flex;
+    gap: 15px;
+    justify-content: space-around;
+    padding: 10px;
+    align-items: center;
+}
+
+.divisor{
+    border-left: #929292 1px solid;
+    height: 100%;
+}
+
+.widget.top {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    overflow: auto;
+}
+
+.contador-riscos{
+    white-space: nowrap;
+}
+
+.widget.linha-multi{
+    width: 35%;
+    height: 50%;
+}
+
+.widget.pizza.class {
+    width: 35%;
+    height: 48%;
 }
